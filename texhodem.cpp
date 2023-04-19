@@ -75,6 +75,62 @@ Model:
     pick 5 cards out of two
 */
 
+enum Suit {Heart, Diamond, Spade, Club};
+enum Round {Flop, Turn = 3, River};
+
+class BaseCard{
+    Suit suit;
+    int key;
+public:
+    BaseCard() {}
+    BaseCard(int x, char c) {
+        if (c == 'H') {
+            this->suit = Suit::Heart;
+            this->key = x;
+        }
+        else if (c == 'D') {
+            this->suit = Suit::Diamond;
+            this->key = x;
+        }
+        else if (c == 'S') {
+            this->suit = Suit::Spade;
+            this->key = x;
+        }
+        else {
+            this->suit = Suit::Club;
+            this->key = x;
+        }
+    }
+    Suit getSuit() const {
+        return this->suit;
+    }
+    int getKey() const {
+        return this->key;
+    }
+};
+
+class Player {
+    int playerID;
+    string nickName;
+    string password; 
+    int balance;
+public:
+    Player() {}
+    Player(int& total, string _nickName, string _password, int _balance) {
+        this->playerID = ++ total;
+        this->nickName = _nickName;
+        this->password = _password;
+        this->balance = _balance;
+    }
+    void displayInfo() {
+        cout << "------------------PlayerInfo---------------------\n";
+        cout << "Player ID: " << playerID << endl;
+        cout << "Player Nickname: " << nickName << endl;
+        cout << "Player Balance: " << balance << endl;
+        cout << "-------------------------------------------------\n";
+    }
+};
+
 
 int main() {
 } 
